@@ -1,10 +1,6 @@
-package main
+package dsa
 
 import "fmt"
-
-type Data interface {
-	any
-}
 
 type Node2 struct {
 	data Data
@@ -39,8 +35,8 @@ func (l *List) insertEnd(d Data) {
 		for current.next != nil { //note: for loop stops after false ha been received
 			current = current.next
 		}
-		node.prev = current
 		current.next = node
+		node.prev = current
 		node.next = nil
 	}
 }
@@ -54,6 +50,8 @@ func (l *List) printList() {
 	}
 	fmt.Print("nil")
 }
+
+func 
 
 func main() {
 	l := List{}
