@@ -4,10 +4,6 @@ import (
 	"fmt"
 )
 
-type Data interface {
-	any
-}
-
 type Node struct {
 	data Data
 	next *Node
@@ -55,6 +51,27 @@ func (ll *List_) insertBeginning(d Data) {
 		ll.Head = newHead
 		newHead.next = current
 	}
+}
+
+func (ll *List) insertAfter(d Data, n uint) {
+	if n == 1 {
+		ll.insertBeginning(d)
+		return
+	}
+	i := 0
+	node := &Node2{data: d}
+	current := ll.Head
+	for current != nil && i != n+1 {
+		i++
+		if current == nil || current.next == nil {
+			fmt.Println("Out of bound")
+			return
+		}
+		current = current.next
+	}
+	nextnode := current.next.next
+	current.next = node
+	node.next = nextnode
 }
 
 // Prints out the entire list
